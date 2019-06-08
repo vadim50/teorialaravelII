@@ -19,6 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+//Route::get('/',['as'=>'home','middleware'=>'auth','uses'=>'Admin\IndexController@show']);
+
 Route::get('/article/{id}/{name}', function ($id,$name) {
     //return view('welcome');
     echo $id;
@@ -75,7 +77,7 @@ Route::get('/about/{id}','FirstController@show');
 Route::get('/dir/about','Dir\FirstController@show');
 
 Route::get('/articles',['uses'=>'Admin\Core@getArticles','as'=>'articles']);
-Route::get('/article/{page}',['middleware'=>'mymiddle','uses'=>'Admin\Core@getArticle','as'=>'article']);
+Route::get('/article/{page}',['middleware'=>'mymiddle:home','uses'=>'Admin\Core@getArticle','as'=>'article']);
 
 Route::get('/pages/add','Admin\CoreResource@add');
 Route::resource('/pages','Admin\CoreResource');//exept/['only'=>['index','show']];
