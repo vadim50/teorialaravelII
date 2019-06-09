@@ -18,7 +18,7 @@ class IndexController extends Controller
     	// $view->with('title2','Hello Laravel 2');
 
     	// return $view;
-    	if(view()->exists('default.template')){
+    	if(view()->exists('default.index')){
     		
     		// $path = config('view.paths');
     		// return view()->file($path[0].'/default/template.blade.php')->withTitle('hello laravel');
@@ -29,7 +29,7 @@ class IndexController extends Controller
 	    	// return view()->of('myview')->withTitle('Hello All!');
             // ================================= Bred ne pabotaet ============
 
-            $view = view('default.template',['title'=>'HEllo'])->render();
+            $view = view('default.index',['title'=>'HEllo'])->render();
             return $view;
             //echo view('default.template',['title'=>'Hello!!'])->getPath();
     	}

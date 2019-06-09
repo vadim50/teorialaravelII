@@ -10,5 +10,9 @@ class AboutController extends Controller
     //
     public function show(){
     	//return view('');
+    	if(view()->exists('default.about')){
+    		return view('default.about')->withTitle('About V.VII');
+    	}
+    	abort(404);
     }
 }
