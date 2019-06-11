@@ -1,4 +1,57 @@
  <div class="col-md-9">
+  {!! $script !!}
+  <h1>@if($bvar)
+      {{ $title }}
+      @endif
+  </h1>
+  <h1>{{ isset($vbar) ? $title : $false }}</h1>
+
+  @if(count($data) < 3)
+
+  <p>меньше 3</p>
+
+  @elseif(count($data)>10)
+    <p>больше 10</p>
+  @else
+
+  <p>Неизвестно..</p>
+
+  @endif
+
+  <ul>
+    @for($i=0;$i < count($dataI);$i++)
+
+      <li>{{ $dataI[$i] }}</li>
+
+    @endfor
+  </ul>
+
+  <ul>
+    @foreach($data as $k=>$v)
+      <li>{{ $k.'=>'.$v }}</li>
+    @endforeach
+  </ul>
+
+  <ul>
+    @forelse($data as $k=>$v)
+      <li>{{ $k.'=>'.$v }}</li>
+    @empty
+    <p>No Items...</p>
+    @endforelse
+  </ul>
+
+  <ul>
+<?php $i=1; ?>
+    @while($i < count($dataI))
+      
+     <li>{{ $i.') '.$dataI[$i] }}</li>
+     <?php $i++; ?>
+     @endwhile
+  </ul>
+
+  @each('default.list',$dataI,'value')
+
+  <h1>@myDir('HEllo')</h1>
         <div class="row">
           <div class="col-md-6">
         <h2>Heading</h2>

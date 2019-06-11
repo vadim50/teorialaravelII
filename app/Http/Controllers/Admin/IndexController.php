@@ -18,6 +18,22 @@ class IndexController extends Controller
     	// $view->with('title2','Hello Laravel 2');
 
     	// return $view;
+
+        $array = [
+            'title'=>'Laravel Project',
+            'data'=>[
+                // 'one'=>'List 1',
+                // 'two'=>'List 2',
+                // 'threee'=>'List 3',
+                // 'four'=>'List 4',
+                // 'five'=>'list 5'
+            ],
+            'dataI'=>['List 1','List 2','List 3','list 4','list 5'],
+            'bvar'=>true,
+            'false'=>'False',
+            'script'=>"<script>alert('hello')</script>",
+            'title'=>'Hello Laravel V.VIII'
+        ];
     	if(view()->exists('default.index')){
     		
     		// $path = config('view.paths');
@@ -29,7 +45,7 @@ class IndexController extends Controller
 	    	// return view()->of('myview')->withTitle('Hello All!');
             // ================================= Bred ne pabotaet ============
 
-            $view = view('default.index',['title'=>'HEllo'])->render();
+            $view = view('default.index',$array)->render();
             return $view;
             //echo view('default.template',['title'=>'Hello!!'])->getPath();
     	}

@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>Jumbotron Template · Bootstrap</title>
+    <title>{{ $title }}</title>
 
     <!-- <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/jumbotron/"> -->
 
@@ -72,6 +72,7 @@
 @section('header')
   <div class="jumbotron">
     <div class="container">
+      <h1>{{ date('d.M.Y',time()) }}</h1>
       <h1 class="display-3">{{ $title }}</h1>
       <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
       <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
