@@ -82,5 +82,7 @@ Route::get('/article/{id}',['middleware'=>'mymiddle:home','uses'=>'Admin\Core@ge
 Route::get('/pages/add','Admin\CoreResource@add');
 Route::resource('/pages','Admin\CoreResource');//exept/['only'=>['index','show']];
 
+Route::match(['get','post'],'/contacts/{name?}',['uses'=>'Admin\ContactController@show','as'=>'contacts']);
+
 
 

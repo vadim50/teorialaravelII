@@ -56,6 +56,9 @@
       <li class="nav-item">
         <a class="nav-link" href="{{ route('about') }}">About</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('contacts') }}">Contacts</a>
+      </li>
      
     </ul>
     <form class="form-inline my-2 my-lg-0">
