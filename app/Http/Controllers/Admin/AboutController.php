@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 
 
 class AboutController extends Controller
@@ -15,8 +16,36 @@ class AboutController extends Controller
     	//return view('');
     	//return 'Hello';
     	if(view()->exists('default.about')){
+            // $articles = DB::select("SELECT * FROM `articles` WHERE id=?",[2]);
+            //$articles = DB::select("SELECT * FROM `articles`");
+            //$articles = DB::select("SELECT * FROM `articles` WHERE id=:id",['id'=>2]);
+            // DB::insert("INSERT INTO `articles` (`name`,`text`,`img`) VALUES(:name,:text,:img)",
+
+            //     [
+
+            //         'name'=>'Test I',
+            //         'text'=>'TEXT',
+            //         'img'=>'pic4.jpg'
+            //     ]
+            // );
+
+            //$res = DB::connection()->getPdo()->lastInsertId();
+
+            // $res = DB::update("UPDATE `articles` SET `name`=:name WHERE id=:id",
+            //     ['name'=>'TEST III','id'=>5]);
+
+
+
+            //$res = DB::delete('DELETE FROM `articles` WHERE id=:id',['id'=>5]);
+
+            //DB::statment('DROP table `articles`');
+
+
+            $articles = DB::select("SELECT * FROM `articles`");
+            dump($articles);
+            //dump($res);
     		//return view('default.about')->withTitle('About V.VII');
-    		$view = view('default.about')->withTitle('Hello World')->render();
+    		return view('default.about')->withTitle('Hello World');
 
     		// return (new Response($view,200))
     		// ->header('Content','HEllo')
