@@ -43,9 +43,14 @@ class AboutController extends Controller
 
             $articles = DB::select("SELECT * FROM `articles`");
             dump($articles);
+            $page = DB::select('SELECT `name`,`alias`,`text` FROM `pages` WHERE alias=:alias',
+
+                ['alias'=>'about']
+
+            );
             //dump($res);
     		//return view('default.about')->withTitle('About V.VII');
-    		return view('default.about')->withTitle('Hello World');
+    		return view('default.about',['title'=>'About','articles'=>$articles,'page'=>$page[0]]);
 
     		// return (new Response($view,200))
     		// ->header('Content','HEllo')
