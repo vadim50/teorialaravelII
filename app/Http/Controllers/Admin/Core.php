@@ -114,6 +114,67 @@ class Core extends Controller
     	// Article::chunk(2,function($articles){
 
     	// });
+
+    	// Article::create(
+
+    	// 	[
+
+    	// 		'name'=>'Hello World create',
+    	// 		'text'=>'Some Text create',
+    	// 		'img'=>'somepic.jpg'
+    	// 	]
+    	// );
+
+    	// $article = Article::firstOrCreate([
+
+    	// 	'name'=>'Hello World create 1',
+    	// 	'text'=>'Some Text create',
+    	// 	'img'=>'somepic.jpg'
+
+    	// ]);
+
+    	// $article = Article::firstOrNew([
+
+    	// 	'name'=>'Hello World create 2',
+    	// 	'text'=>'Some Text create',
+    	// 	'img'=>'somepic.jpg'
+
+    	// ]);
+
+    	// $article->save();
+    	// $article = Article::find(13);
+
+    	// $article->delete();
+
+    	//Article::destroy(12);
+    	//Article::destroy([11,10]);
+    	//Article::where('id',9)->delete();
+
+    	//Soft Delete==========================>>
+    	// $article = Article::find(9);
+    	// $article->delete();
+    	//=====================================>>
+
+
+
+    	//$articles = Article::all();
+    	//$articles = Article::withTrashed()->get();
+    	 //$articles = Article::withTrashed()->get();
+    	//$articles = Article::onlyTrashed()->restore();
+
+    	 // foreach($articles as $article){
+    	 // 	if($article->trashed()){
+    	 // 		echo $article->id.') '.$article->name.' Deleted!<br>';
+    	 // 		$article->restore();
+    	 // 	}else{
+    	 // 		echo $article->id.') '.$article->name.'No Deleted<br>';
+    	 // 	}
+    	 // }
+    	// $article = Article::find(9);
+    	// $article->forceDelete();
+    	$articles = Article::all();
+    	dump($articles);
+    	//dump($article);
     }
     public function getArticle($id){
     	echo 'Otvet->'.$id;
