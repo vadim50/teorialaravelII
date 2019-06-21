@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Article;
+use App\User;
+use App\Country;
+use App\Role;
 
 class Core extends Controller
 {
@@ -170,11 +173,103 @@ class Core extends Controller
     	 // 		echo $article->id.') '.$article->name.'No Deleted<br>';
     	 // 	}
     	 // }
-    	// $article = Article::find(9);
-    	// $article->forceDelete();
-    	$articles = Article::all();
-    	dump($articles);
+    	// uent
+    	// ONE TO ONE
+    	// $user = User::find(1);
+    	// $country = Country::find(1);
+
+    	// dump($country->user);
+    	// dump($user->country);
+    	//One TO MANY=======
+    	//$user = User::find(1);
+    	//$a = $user->articles;
+    	// $a = $user->articles()->where('id','>',3)->get();
+    	// foreach($a as $ar){
+    	// 	echo $ar->id.') '.$ar->name.'<br>';
+    	// }
+    	// echo '<hr>';
+
+    	// $author = Country::find(1);
+
+    	// dump($author->user->email);
+    	// $article = Article::find(1);
+    	// dump($article->user->name);
+    	//Many To Many
+    	//$role = User::find(1)->roles()->where('roles.id','=','2')->first();
+    	// foreach($user->roles as $role){
+    	// 	echo $role->id.') '.$role->name.'<br>';
+    	// }
+    	//$user = Role::find(1)->users()->where('users.id',1)->first();
+    	
+    	//dump($user->name);
+    	// $role = Role::find(1);
+    	// dump($role->users);
+
+    	// $articles = Article::all();
+
+
+    	// dump($articles);
     	//dump($article);
+
+    	//$articles = Article::all();
+    	//$articles = Article::with('user')->get();
+
+    	// $articles->load('user');
+
+    	// foreach($articles as $article){
+    	// 	echo $article->user->name.'<br>';
+    	// }
+
+    	// $users = User::with('articles','roles')->get();
+    	// $users = User::has('articles')->get();
+    	//$users = User::has('articles','>=',3)->get();
+
+    	//foreach ($users as $user) {
+    		# code...
+    		//dump($user->roles);
+    		//dump($user);
+    	//}
+
+    	//dump($articles);
+
+    	
+
+    	// $article = new Article([
+
+    	// 	'name'=>'New New Article',
+    	// 	'text'=>'NEw NEw TExt',
+    	// 	'img'=>'newImg.jpg'
+
+    	// ]);
+
+    	//$user->articles()->save($article); //models
+   //  	$user->articles()->create([ //massive
+			// 'name'=>'New New Article II',
+   //  		'text'=>'NEw NEw TExt II',
+   //  		'img'=>'newImg1.jpg'
+
+
+   //  	]);
+    	// $user->articles()->saveMany(
+
+    	// 	[
+    	// 		new Article(['name'=>'New I) New Article','text'=>'NEw NEw TExt I','img'=>'newImg.jpg']),
+    	// 		new Article(['name'=>'New II) New Article','text'=>'NEw NEw TExt II','img'=>'newImg.jpg']),
+    	// 		new Article(['name'=>'New III) New Article','text'=>'NEw NEw TExt III','img'=>'newImg.jpg']),
+
+    	// 	]
+
+    	// );
+    	// $role = new Role(['name'=>'quest']);
+    	// $user->roles()->save($role);
+
+    	$user = User::find(2);
+
+    	$user->articles()->where('id',8)->update(['name'=>'NEW TEXT IIIIVVV']);
+
+    	$articles = Article::all();
+
+    	dump($articles);
     }
     public function getArticle($id){
     	echo 'Otvet->'.$id;

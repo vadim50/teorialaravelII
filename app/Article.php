@@ -17,4 +17,8 @@ class Article extends Model
     //protected $quarded = ['name'];
     protected $fillable = ['name','text','img'];
     protected $dates = ['deleted_at'];
+
+    public function user(){
+    	return $this->belongsTo('App\User');
+    }
 }

@@ -28,6 +28,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function country(){
+       return $this->hasOne('App\Country','user_id','id'); //user_id
+    }
+    public function articles(){
+        return $this->hasMany('App\Article');
+    }
+    public function roles(){
+        return $this->belongsToMany('App\Role');
+    }
+
     /**
      * The attributes that should be cast to native types.
      *
