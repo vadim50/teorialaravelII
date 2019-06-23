@@ -263,13 +263,49 @@ class Core extends Controller
     	// $role = new Role(['name'=>'quest']);
     	// $user->roles()->save($role);
 
-    	$user = User::find(2);
+    	// $user = User::find(2);
 
-    	$user->articles()->where('id',8)->update(['name'=>'NEW TEXT IIIIVVV']);
+    	// $user->articles()->where('id',8)->update(['name'=>'NEW TEXT IIIIVVV']);
 
-    	$articles = Article::all();
+    	// $articles = Article::all();
 
-    	dump($articles);
+    	// dump($articles);
+
+    	// $country = Country::find(1);
+    	// $user = User::find(2);
+
+    	// $country->user()->associate($user);
+    	// $country->save();
+    	// $articles = Article::all();
+    	// $user = User::find(2);
+
+    	// foreach($articles as $article){
+    	// 	$article->user()->associate($user);
+    	// 	$article->save();
+    	// }
+    	// $user = User::find(2);
+    	// $role_id = Role::find(2)->id;
+
+    	// $user->roles()->attach($role_id);
+    	// $user->roles()->detach($role_id);
+
+    	//Mutators Accessors==
+
+    	$article = Article::find(13);
+    	//dump($article);
+
+    	//$article->name = 'Some TExt Mutator!';
+
+    	//echo $article->name;
+    	// $arr = ['key'=>'hello world'];
+    	// $article->text = $arr;
+    	// $article->save();
+    	// dump($article->text);
+    	// dump($article->toArray());
+    	//dump($article->toJson());
+    	dump((string)$article);
+
+
     }
     public function getArticle($id){
     	echo 'Otvet->'.$id;
