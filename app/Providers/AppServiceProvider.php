@@ -38,10 +38,10 @@ class AppServiceProvider extends ServiceProvider
             return Response::make(strtoupper($value));
         });
 
-        DB::listen(function($query){
-            dump($query->sql);
-            dump($query->bindings);
-        });
+        // DB::listen(function($query){
+        //     dump($query->sql);
+        //     dump($query->bindings);
+        // });
 
 
     }

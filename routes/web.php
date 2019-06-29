@@ -82,7 +82,21 @@ Route::get('/article/{id}',['middleware'=>'mymiddle:home','uses'=>'Admin\Core@ge
 Route::get('/pages/add','Admin\CoreResource@add');
 Route::resource('/pages','Admin\CoreResource');//exept/['only'=>['index','show']];
 
-Route::match(['get','post'],'/contacts/{name?}',['uses'=>'Admin\ContactController@show','as'=>'contacts']);
+Route::get('/contacts',['middleware'=>'auth','uses'=>'Admin\ContactController@show','as'=>'contacts']);
+Route::post('/contacts/{name?}',['uses'=>'Admin\ContactController@store']);
 
 
 
+Auth::routes();
+
+ Route::group(['middleware'=>'web'],function(){
+	Route::get('/login',['uses'=>'Auth\MyAuthController@showLogin']);
+	Route::post('/login',['uses'=>'Auth\MyAuthController@authenticate'])->name('login');
+});
+
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix'=>'admin', 'middleware'=>['web','auth']],function(){
+	Route::get('/',['uses'=>'Admin\AdminController@show','as'=>'admin_index']);
+	Route::get('/add/post',['uses'=>'Admin\AdminPostController@show','as'=>'admin_add_post']);
+
+});

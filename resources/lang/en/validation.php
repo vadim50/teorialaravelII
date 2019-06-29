@@ -129,9 +129,14 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'name' => [
+            'required' => 'Поле :attribute обязательно к заполнению',
         ],
+        'email' => [
+            'required' => 'Поле :attribute обязательно к заполнению',
+            'email' => 'Поле :attribute должно быть email адресом',
+        ],
+        
     ],
 
     /*
