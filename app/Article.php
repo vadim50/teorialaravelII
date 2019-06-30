@@ -18,7 +18,7 @@ class Article extends Model
     protected $fillable = ['name','text','img'];
     protected $dates = ['deleted_at'];
 
-    protected $casts = ['name'=>'boolean','text'=>'array'];
+    //protected $casts = ['name'=>'boolean','text'=>'array'];
 
     public function user(){
     	return $this->belongsTo('App\User');

@@ -291,7 +291,7 @@ class Core extends Controller
 
     	//Mutators Accessors==
 
-    	$article = Article::find(13);
+    	//$article = Article::find(13);
     	//dump($article);
 
     	//$article->name = 'Some TExt Mutator!';
@@ -303,7 +303,24 @@ class Core extends Controller
     	// dump($article->text);
     	// dump($article->toArray());
     	//dump($article->toJson());
-    	dump((string)$article);
+    	//dump((string)$article);
+
+        $articles = Article::all();
+
+        foreach($articles as $article){
+            echo $article->id.') '.$article->name.'| |'.$article->text.'|||'.$article->img.'<br>';
+            
+        }
+        $user = User::find(4);
+        $roles = $user->roles;
+       foreach($roles as $role){
+        echo $role->name;
+       }
+        // $users = User::all();
+
+        // foreach($users as $user){
+        //     echo $user->name.'|'.$user->email.'<br>';
+        // }
 
 
     }
