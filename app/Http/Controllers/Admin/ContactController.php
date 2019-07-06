@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ContactRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 class ContactController extends Controller
 {
@@ -108,9 +109,24 @@ class ContactController extends Controller
     public function show(Request $request){
 
     	// $result = $request->session()->get('key','default');
-    	$result = $request->session()->all();
+    	//$result = $request->session()->all();
+    	//$result = $request->session()->put('key.first','value');
+    	//if($request->session()->has('key.second')){
+    		//$result = $request->session()->all();
+    	//}
 
-    	dump($result);
+    	//$request->session()->push('key.second','value3');
+    	//Session::push('key.second','value4');
+    	//session()->push('key2','value5');
+    	//session(['key3'=>'value6']);
+    	
+    	//dump(session('key3'));
+    	//dump($result);
+    	//Session::forget('key.first');
+    	//Session::flush();
+    	//dump(Session::pull('key'));
+    	//Session::flash('message','value');
+    	//Session::reflash();
 
     	return view('default.contacts',['title'=>'Contacts']);
     }
