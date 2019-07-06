@@ -23,6 +23,11 @@
 	</div>
 @endif
 
+@cannot('update',$article)
+	<div class="alert alert-danger">
+		<p>Нет Прав!</p>
+	</div>
+@endcannot
 
 <form method="post" action="{{ route('admin_update_post_p') }}">
 	@csrf

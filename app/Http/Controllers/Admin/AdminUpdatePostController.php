@@ -20,12 +20,17 @@ class AdminUpdatePostController extends Controller
     public function create(Request $request){
     	$this->validate($request,['name'=>'required']);
 
+
+
     	$user = Auth::user();
     	$data = $request->except('_token');
 
     	$article = Article::find($data['id']);
+    	//$this->authorize('update',$article);
+    	$this->authorizeForUser($user,'update',$article);
     	//if(Gate::forUser(4)->allows('update-article',$article))
-    	if(Gate::allows('update-article',$article)){
+    	//if(Gate::allows('update',$article)){
+    	//if($request->user()->can('update',$article)){
     		$article->name = $data['name'];
 	    	$article->text = $data['text'];
 	    	$article->img = $data['img'];
@@ -33,7 +38,7 @@ class AdminUpdatePostController extends Controller
 	    	$res = $user->articles()->save($article);
 
 	    	return redirect()->back()->with('message','Материал Обновлен');
-    	}
+    	//}
 
     	return redirect()->back()->with(['message'=>'Нет прав!']);
     }

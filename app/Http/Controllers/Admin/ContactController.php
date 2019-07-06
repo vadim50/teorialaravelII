@@ -18,6 +18,7 @@ class ContactController extends Controller
 
     public function store(Request $request){
 
+
 		//print_r($request->all());
 		//$data = $request->only('name','site');
 		//$data = $request->except('_token');
@@ -104,7 +105,13 @@ class ContactController extends Controller
 
 		return view('default.contacts',['title'=>'Contacts']);
     }
-    public function show(){
+    public function show(Request $request){
+
+    	// $result = $request->session()->get('key','default');
+    	$result = $request->session()->all();
+
+    	dump($result);
+
     	return view('default.contacts',['title'=>'Contacts']);
     }
 }

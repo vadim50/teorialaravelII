@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use App\Article;
 
 class AdminPostController extends Controller
 {
@@ -16,9 +17,19 @@ class AdminPostController extends Controller
 
     public function create(Request $request){
 
-        if(Gate::denies('add-article')){
+        // if(Gate::denies('add-article')){
+        //     return redirect()->back()->with(['message'=>'Нет прав!']);
+        // }
+        $article = new Article;
+
+        // if(Gate::denies('add',$article)){
+        //     return redirect()->back()->with(['message'=>'Нет прав!']);
+        // }
+
+        if($request->user()->cannot('add',$article)){
             return redirect()->back()->with(['message'=>'Нет прав!']);
         }
+
     	$this->validate($request,['name'=>'required']);
 
     	$user = Auth::user();
