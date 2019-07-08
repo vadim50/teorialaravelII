@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+//use Illuminate\Support\Facades\Event;
+use App\Events\onAddArticleEvent;
 use App\Article;
+use Event;
 
 class AdminPostController extends Controller
 {
@@ -42,6 +45,10 @@ class AdminPostController extends Controller
     		'img' => $data['img']
 
     	]);
+
+
+        //Event::dispatch(new onAddArticleEvent($res, $user));
+        event(new onAddArticleEvent($res, $user));
 
     	return redirect()->back()->with('message','Материал добавлен');
     }

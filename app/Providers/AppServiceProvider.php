@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\DB;
+use App\Article;
+use Illuminate\Support\Facades\Log;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -42,6 +44,11 @@ class AppServiceProvider extends ServiceProvider
         //     dump($query->sql);
         //     dump($query->bindings);
         // });
+
+        Article::created(function(Article $article){
+            Log::info('Article save:',
+            [$article->user->name => $article->name]);
+        });
 
 
     }

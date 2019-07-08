@@ -18,6 +18,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        'App\Events\onAddArticleEvent' => [
+        'App\Listeners\AddArticleListener',
+    ],
     ];
 
     /**
@@ -30,5 +33,6 @@ class EventServiceProvider extends ServiceProvider
         parent::boot();
 
         //
+        //Event::listen('onAddArticleEvent',function($article));
     }
 }
