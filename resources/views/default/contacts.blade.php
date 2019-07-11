@@ -8,6 +8,9 @@
 		</pre>
 		
 		<div>
+			<h1>{{  __('messages.welcome',['name'=>'Ken'])  }}</h1>
+			<h1>{{  __('messages.hello',['name'=>'Ben'])  }}</h1>
+			<h3>{{ $title_head }}</h3>
 			<h2>{{ $title }}</h2>
 	
 		</div>

@@ -15,8 +15,8 @@ class Article extends Model
     //public $timestamps = false;
     // public $incrementing = false;
     //protected $quarded = ['name'];
-    protected $fillable = ['name','text','img'];
-    protected $dates = ['deleted_at'];
+    protected $fillable = ['name', 'img','text', 'user_id', 'updated_at', 'created_at'];
+    //protected $dates = ['deleted_at'];
 
     //protected $casts = ['name'=>'boolean','text'=>'array'];
 

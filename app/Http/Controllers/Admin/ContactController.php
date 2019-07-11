@@ -7,6 +7,10 @@ use App\Http\Requests\ContactRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\App;
+use App\Helpers\Contracts\SaveStr;
+use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class ContactController extends Controller
 {
@@ -17,7 +21,7 @@ class ContactController extends Controller
     // 	$this->request = $request;
     // }
 
-    public function store(Request $request){
+    public function store(Request $request,SaveStr $saveStr,$id=false){
 
 
 		//print_r($request->all());
@@ -46,7 +50,7 @@ class ContactController extends Controller
 		// print_r($request->header());
 		// print_r($request->server());
 		//print_r($request->segments());
-		if($request->isMethod('post')){
+		//if($request->isMethod('post')){
 
 
 
@@ -63,48 +67,52 @@ class ContactController extends Controller
 
 	
 
-			$messages = [
+			// $messages = [
 
-				'required' => 'ПОЛЕ :attribute обязательно к заполнению !!',
-            	'email' => 'ПОЛЕ :attribute должно быть email адресом',
+			// 	'required' => 'ПОЛЕ :attribute обязательно к заполнению !!',
+   //          	'email' => 'ПОЛЕ :attribute должно быть email адресом',
 
-			];
+			// ];
 
-			$validator = Validator::make($request->all(),[
+			// $validator = Validator::make($request->all(),[
 
-				'name'=>'required',
-				//'email'=>'sometimes|email|required',
-				//'email'=>'email|required',
+			// 	'name'=>'required',
+			// 	//'email'=>'sometimes|email|required',
+			// 	//'email'=>'email|required',
 
-			],$messages);
+			// ],$messages);
 
-			$validator->sometimes(['email','site'],'required',function($input){
-				//dump($input);die;
-				return strlen($input->name) >= 10;
-			});
-
-			// $validator->after(function($validator){
-			// 	$validator->errors()->add('email','Add Message');
+			// $validator->sometimes(['email','site'],'required',function($input){
+			// 	//dump($input);die;
+			// 	return strlen($input->name) >= 10;
 			// });
 
-			if($validator->fails()){
-				//dump($validator->errors());
-				$messages = $validator->errors();
-				if($messages->has('name')){
-					dump($messages->first('email','<p>  :message </p>'));
-					dump($messages->all('<p> :message </p>'));
-					dump($messages->get('name'));
-				}
-				dump($messages->all());
-				dump($messages->first('email'));
+			// // $validator->after(function($validator){
+			// // 	$validator->errors()->add('email','Add Message');
+			// // });
 
-				dump($validator->failed());exit;
+			// if($validator->fails()){
+			// 	//dump($validator->errors());
+			// 	$messages = $validator->errors();
+			// 	if($messages->has('name')){
+			// 		dump($messages->first('email','<p>  :message </p>'));
+			// 		dump($messages->all('<p> :message </p>'));
+			// 		dump($messages->get('name'));
+			// 	}
+			// 	dump($messages->all());
+			// 	dump($messages->first('email'));
 
-				return redirect()->route('contacts')->withErrors($validator)->withInput();
-			}
-		}
+			// 	dump($validator->failed());exit;
 
-		return view('default.contacts',['title'=>'Contacts']);
+		// 		return redirect()->route('contacts')->withErrors($validator)->withInput();
+		// 	}
+		// }
+
+		// return view('default.contacts',['title'=>'Contacts']);
+		//$user = User::find(4);
+		$saveStr->save($request,Auth::user());
+
+			return redirect()->route('contacts');
     }
     public function show(Request $request){
 
@@ -128,6 +136,13 @@ class ContactController extends Controller
     	//Session::flash('message','value');
     	//Session::reflash();
 
-    	return view('default.contacts',['title'=>'Contacts']);
+    	//$title_head =__('messages.welcome',['name'=>'Den']);
+    	// $title_head = trans_choice('messages.apple',3);
+    	if (App::isLocale('ru')){
+    		$title_head = trans_choice('messages.apples',20);
+    	}
+    	//$title_head = trans_choice('messages.apples',20);
+
+    	return view('default.contacts',['title'=>'Contacts','title_head'=>$title_head]);
     }
 }

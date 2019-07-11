@@ -83,7 +83,7 @@ Route::get('/pages/add','Admin\CoreResource@add');
 Route::resource('/pages','Admin\CoreResource');//exept/['only'=>['index','show']];
 
 Route::get('/contacts',['middleware'=>'auth','uses'=>'Admin\ContactController@show','as'=>'contacts']);
-Route::post('/contacts/{name?}',['uses'=>'Admin\ContactController@store']);
+Route::post('/contacts/{name?}',['middleware'=>'web','uses'=>'Admin\ContactController@store']);
 
 
 
