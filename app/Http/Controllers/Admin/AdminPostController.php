@@ -10,8 +10,9 @@ use Illuminate\Support\Facades\Gate;
 use App\Events\onAddArticleEvent;
 use App\Article;
 use Event;
-use App\Helpers\Contracts\SaveStr;
+//use App\Helpers\Contracts\SaveStr;
 use Illuminate\Support\Facades\App;
+use SaveStr;
 
 class AdminPostController extends Controller
 {
@@ -47,12 +48,14 @@ class AdminPostController extends Controller
     	// 	'img' => $data['img']
 
     	// ]);
-        $var = App::make('App\Helpers\Contracts\SaveStr');
+        //$var = App::make('App\Helpers\Contracts\SaveStr');
 
         //$saveStr->save($request,Auth::user());
-        $var->save($request,Auth::user());
+        //$var->save($request,Auth::user());
         //Event::dispatch(new onAddArticleEvent($res, $user));
         //event(new onAddArticleEvent($res, $user));
+
+        SaveStr::save($request,Auth::user());
 
     	return redirect()->back()->with('message','Материал добавлен');
     }

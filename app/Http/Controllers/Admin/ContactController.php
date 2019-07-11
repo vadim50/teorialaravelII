@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\App;
 use App\Helpers\Contracts\SaveStr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 use App\User;
 
 class ContactController extends Controller
@@ -115,6 +116,8 @@ class ContactController extends Controller
 			return redirect()->route('contacts');
     }
     public function show(Request $request){
+
+    	dd(Lang::$app);
 
     	// $result = $request->session()->get('key','default');
     	//$result = $request->session()->all();
